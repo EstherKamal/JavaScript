@@ -321,3 +321,225 @@ I am a biotechnology student with interests in agricultural science, scientific 
 </div>
 
 </section>
+
+  <!-- ========================= -->
+<!-- SKILLS -->
+<!-- ========================= -->
+
+<section id="skills">
+
+<h2 class="section-title">Skills</h2>
+
+<div class="skills">
+
+<div class="skill">
+
+<h3>💻 Programming</h3>
+
+<ul>
+<li>JavaScript (ES6+)</li>
+<li>HTML5</li>
+<li>CSS3</li>
+<li>Responsive Web Design</li>
+<li>Git & GitHub</li>
+</ul>
+
+</div>
+
+<div class="skill">
+
+<h3>🔬 Research</h3>
+
+<ul>
+<li>Scientific Writing</li>
+<li>Academic Research</li>
+<li>Literature Review</li>
+<li>Presentation Design</li>
+<li>Data Analysis</li>
+</ul>
+
+</div>
+
+<div class="skill">
+
+<h3>🌱 Agriculture</h3>
+
+<ul>
+<li>Cotton Research</li>
+<li>Modern Agriculture</li>
+<li>Sustainable Development</li>
+<li>Agricultural Innovation</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- RESEARCH INTERESTS -->
+<!-- ========================= -->
+
+<section>
+
+<h2 class="section-title">Research Interests</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>🌾 Sustainable Agriculture</h3>
+
+<p>
+Developing innovative agricultural practices that improve productivity
+while preserving natural resources.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>🤖 Technology in Agriculture</h3>
+
+<p>
+Applying programming and digital technologies to solve agricultural
+problems and improve farming efficiency.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>📚 Education</h3>
+
+<p>
+Creating educational resources that make programming accessible to
+students and beginners.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- ACHIEVEMENTS -->
+<!-- ========================= -->
+
+<section>
+
+<h2 class="section-title">Highlights</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>📄 Research Papers</h3>
+<p>Prepared multiple academic reports and presentations in agriculture.</p>
+</div>
+
+<div class="card">
+<h3>📘 Author</h3>
+<p>Wrote "Booky", an educational JavaScript programming book.</p>
+</div>
+
+<div class="card">
+<h3>🌍 Erasmus Applicant</h3>
+<p>Preparing an academic portfolio for international collaboration and graduate study.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- CONTACT -->
+<!-- ========================= -->
+
+<section id="contact">
+
+<h2 class="section-title">Contact</h2>
+
+<div class="about">
+
+<p><strong>Name:</strong> Esther Kamal</p>
+
+<p><strong>Email:</strong> your-email@example.com</p>
+
+<p><strong>GitHub:</strong>
+<a href="https://github.com/YOUR_USERNAME" target="_blank">
+https://github.com/YOUR_USERNAME
+</a>
+</p>
+
+<p>
+Thank you for visiting my academic portfolio.
+I welcome opportunities for research collaboration,
+academic exchange, and international study.
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 Esther Kamal • Academic Portfolio • Erasmus Scholarship Application
+
+</p>
+
+</footer>
+
+<script>
+
+document.querySelectorAll('nav a').forEach(anchor=>{
+
+anchor.addEventListener('click',function(e){
+
+e.preventDefault();
+
+document.querySelector(this.getAttribute('href')).scrollIntoView({
+
+behavior:'smooth'
+
+});
+
+});
+
+});
+
+const cards=document.querySelectorAll('.card,.skill');
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+});
+
+cards.forEach(card=>{
+
+card.style.opacity="0";
+card.style.transform="translateY(40px)";
+card.style.transition="all .7s ease";
+
+observer.observe(card);
+
+});
+
+</script>
+
+</body>
+
+</html>
