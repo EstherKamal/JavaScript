@@ -8,6 +8,8 @@
 
 <title>Esther Kamal | Academic Portfolio</title>
 
+<meta name="description" content="Academic Portfolio for Erasmus Scholarship Application">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -26,7 +28,7 @@ body{
 
 font-family:'Poppins',sans-serif;
 
-background:#f5f7fb;
+background:#f4f7fb;
 
 color:#333;
 
@@ -34,27 +36,87 @@ line-height:1.7;
 
 }
 
-header{
+nav{
 
-background:linear-gradient(135deg,#1f7a4d,#1976d2);
+position:fixed;
 
-color:white;
+top:0;
 
-padding:120px 10%;
+left:0;
 
-text-align:center;
+width:100%;
+
+display:flex;
+
+justify-content:center;
+
+gap:40px;
+
+padding:20px;
+
+background:rgba(255,255,255,.95);
+
+backdrop-filter:blur(10px);
+
+box-shadow:0 2px 15px rgba(0,0,0,.08);
+
+z-index:999;
 
 }
 
-header h1{
+nav a{
 
-font-size:58px;
+text-decoration:none;
+
+color:#1976d2;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#1b5e20;
+
+}
+
+header{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+padding:0 10%;
+
+background:linear-gradient(135deg,#1b5e20,#1976d2);
+
+color:white;
+
+}
+
+.hero{
+
+max-width:900px;
+
+}
+
+.hero h1{
+
+font-size:64px;
 
 margin-bottom:20px;
 
 }
 
-header h2{
+.hero h2{
 
 font-weight:400;
 
@@ -62,13 +124,11 @@ margin-bottom:25px;
 
 }
 
-header p{
+.hero p{
 
-max-width:800px;
+font-size:19px;
 
-margin:auto;
-
-font-size:18px;
+margin-bottom:40px;
 
 }
 
@@ -76,17 +136,15 @@ font-size:18px;
 
 display:inline-block;
 
-margin-top:35px;
-
-padding:15px 35px;
+padding:16px 38px;
 
 background:white;
 
 color:#1976d2;
 
-font-weight:bold;
-
 text-decoration:none;
+
+font-weight:bold;
 
 border-radius:40px;
 
@@ -96,55 +154,23 @@ transition:.3s;
 
 .button:hover{
 
-transform:scale(1.05);
-
-}
-
-nav{
-
-position:sticky;
-
-top:0;
-
-background:white;
-
-display:flex;
-
-justify-content:center;
-
-gap:35px;
-
-padding:20px;
-
-box-shadow:0 3px 12px rgba(0,0,0,.1);
-
-z-index:1000;
-
-}
-
-nav a{
-
-text-decoration:none;
-
-font-weight:600;
-
-color:#1976d2;
+transform:translateY(-3px);
 
 }
 
 section{
 
-padding:80px 10%;
+padding:100px 10%;
 
 }
 
-h2.section-title{
+.section-title{
 
 text-align:center;
 
-font-size:38px;
+font-size:42px;
 
-margin-bottom:45px;
+margin-bottom:60px;
 
 color:#1976d2;
 
@@ -156,9 +182,9 @@ max-width:900px;
 
 margin:auto;
 
-font-size:18px;
-
 text-align:center;
+
+font-size:18px;
 
 }
 
@@ -166,11 +192,9 @@ text-align:center;
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 
 gap:30px;
-
-margin-top:40px;
 
 }
 
@@ -178,33 +202,35 @@ margin-top:40px;
 
 background:white;
 
-border-radius:15px;
-
 padding:30px;
+
+border-radius:16px;
 
 box-shadow:0 10px 25px rgba(0,0,0,.08);
 
-transition:.3s;
+transition:.35s;
 
 }
 
 .card:hover{
 
-transform:translateY(-8px);
+transform:translateY(-10px);
+
+box-shadow:0 20px 40px rgba(0,0,0,.12);
 
 }
 
 .card h3{
 
-margin-bottom:15px;
-
 color:#1976d2;
+
+margin-bottom:15px;
 
 }
 
 .card p{
 
-margin-bottom:20px;
+margin-bottom:25px;
 
 }
 
@@ -212,7 +238,7 @@ margin-bottom:20px;
 
 display:inline-block;
 
-padding:10px 22px;
+padding:12px 24px;
 
 background:#1976d2;
 
@@ -226,7 +252,7 @@ text-decoration:none;
 
 .card a:hover{
 
-background:#1459a8;
+background:#1259a7;
 
 }
 
@@ -234,7 +260,7 @@ background:#1459a8;
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 
 gap:25px;
 
@@ -246,9 +272,23 @@ background:white;
 
 padding:25px;
 
-border-radius:15px;
+border-radius:16px;
 
 box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.skill h3{
+
+margin-bottom:15px;
+
+color:#1976d2;
+
+}
+
+.skill ul{
+
+padding-left:20px;
 
 }
 
@@ -258,11 +298,41 @@ background:#222;
 
 color:white;
 
-padding:35px;
-
 text-align:center;
 
-margin-top:70px;
+padding:35px;
+
+margin-top:80px;
+
+}
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:42px;
+
+}
+
+.hero h2{
+
+font-size:22px;
+
+}
+
+nav{
+
+gap:15px;
+
+font-size:14px;
+
+}
+
+.section-title{
+
+font-size:32px;
+
+}
 
 }
 
@@ -288,33 +358,221 @@ margin-top:70px;
 
 <header>
 
+<div class="hero">
+
 <h1>Esther Kamal</h1>
 
 <h2>Biotechnology student</h2>
 
 <p>
 
-PassPassionate about scientific research, modern agriculture, software development, and bioinformatics.
-  My goal is to combine engineering and biotechnology 
-  through scientific research and bioinformatics studies to support sustainable innovation.
-
+PassPassionate about scientific research, modern agriculture,software development, and bioinformatics. My goal is to combine engineering and
+biotechnology through scientific
+research and bioinformatics
+studies to support sustainable
+innovation.
 </p>
 
-<a class="button" href="#research">Explore My Work</a>
+<a href="#research" class="button">
+
+Explore My Work
+
+</a>
+
+</div>
 
 </header>
 
 <section id="about">
 
-<h2 class="section-title">About Me</h2>
+<h2 class="section-title">
+
+About Me
+
+</h2>
 
 <div class="about">
 
 <p>
 
-I am a biotechnology student with interests in agricultural science, scientific writing, and software development. Driven by curiosity, I explore multiple topics, including cotton, plant heredity through genetics, and how biotechnology and engineering can help plants tolerate environmental stress. I believe interdisciplinary collaboration is essential for solving global challenges, and I hope to continue developing my academic journey through my college and other learning programs.
+I am a biotechnology student with interests in agricultural science,scientific writing, and software
+development. Driven by curiosity, I explore multiple topics, including cotton, plant heredity through genetics, and how biotechnology and engineering can help plants tolerate environmental stress. I
+believe interdisciplinary
+collaboration is essential for solving global challenges, andI hope to continue developing my academic journey through my
+college and other learning
+programs.
 
+</p>
 
+</div>
+
+</section>
+
+  <!-- ========================= -->
+<!-- RESEARCH PORTFOLIO -->
+<!-- ========================= -->
+
+<section id="research">
+
+<h2 class="section-title">
+
+Research Portfolio
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>🌿 Cotton Research Report</h3>
+
+<p>
+
+A comprehensive scientific report investigating cotton production,
+cultivation techniques, agricultural challenges, and sustainable
+improvements for future farming.
+
+</p>
+
+<a href="Cotton research report-17.pdf" target="_blank">
+
+Open PDF
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>📊 Cotton Research Presentation</h3>
+
+<p>
+
+A presentation summarizing the objectives, methodology,
+results, and conclusions of the cotton research project.
+
+</p>
+
+<a href="Cotton presentation.pdf" target="_blank">
+
+View Presentation
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>🚜 Modern Agriculture</h3>
+
+<p>
+
+Research discussing precision agriculture, sustainable farming,
+modern technologies, and future agricultural innovation.
+
+</p>
+
+<a href="modern agriculture.pdf" target="_blank">
+
+Read Research
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>📑 Additional Academic Research</h3>
+
+<p>
+
+Supporting academic documentation demonstrating my
+research experience and scientific writing abilities.
+
+</p>
+
+<a href="DOC-20260512-WA0041.pdf" target="_blank">
+
+Read PDF
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- BOOK -->
+<!-- ========================= -->
+
+<section id="book">
+
+<h2 class="section-title">
+
+Publication
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>📘 Booky — JavaScript Programming Book</h3>
+
+<p>
+
+Booky is a beginner-friendly JavaScript programming book
+written to simplify web development concepts through
+clear explanations, practical examples, and coding exercises.
+
+The book reflects my enthusiasm for programming education
+and knowledge sharing.
+
+</p>
+
+<a href="booky (2)_compress.pdf" target="_blank">
+
+Read Book
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- ERASMUS -->
+<!-- ========================= -->
+
+<section id="erasmus">
+
+<h2 class="section-title">
+
+Why Erasmus?
+
+</h2>
+
+<div class="about">
+
+<p>
+
+The Erasmus Scholarship provides an exceptional opportunity
+to collaborate with researchers from different countries,
+exchange scientific knowledge, and strengthen interdisciplinary
+research skills.
+
+Through Erasmus, I hope to combine my interests in software
+development and agricultural science to contribute to
+innovative solutions that support sustainable development
+and food security.
+
+My long-term objective is to participate in international
+research projects and continue developing technologies
+that positively impact agriculture and education.
 
 </p>
 
@@ -328,7 +586,11 @@ I am a biotechnology student with interests in agricultural science, scientific 
 
 <section id="skills">
 
-<h2 class="section-title">Skills</h2>
+<h2 class="section-title">
+
+Skills
+
+</h2>
 
 <div class="skills">
 
@@ -337,25 +599,41 @@ I am a biotechnology student with interests in agricultural science, scientific 
 <h3>💻 Programming</h3>
 
 <ul>
+
 <li>JavaScript (ES6+)</li>
+
 <li>HTML5</li>
+
 <li>CSS3</li>
+
 <li>Responsive Web Design</li>
+
 <li>Git & GitHub</li>
+
+<li>Problem Solving</li>
+
 </ul>
 
 </div>
 
 <div class="skill">
 
-<h3>🔬 Research</h3>
+<h3>📖 Research</h3>
 
 <ul>
+
 <li>Scientific Writing</li>
+
 <li>Academic Research</li>
+
 <li>Literature Review</li>
+
+<li>Research Methodology</li>
+
 <li>Presentation Design</li>
-<li>Data Analysis</li>
+
+<li>Technical Documentation</li>
+
 </ul>
 
 </div>
@@ -365,10 +643,17 @@ I am a biotechnology student with interests in agricultural science, scientific 
 <h3>🌱 Agriculture</h3>
 
 <ul>
+
 <li>Cotton Research</li>
+
 <li>Modern Agriculture</li>
-<li>Sustainable Development</li>
+
+<li>Sustainable Farming</li>
+
 <li>Agricultural Innovation</li>
+
+<li>Food Security</li>
+
 </ul>
 
 </div>
@@ -383,7 +668,11 @@ I am a biotechnology student with interests in agricultural science, scientific 
 
 <section>
 
-<h2 class="section-title">Research Interests</h2>
+<h2 class="section-title">
+
+Research Interests
+
+</h2>
 
 <div class="cards">
 
@@ -392,30 +681,36 @@ I am a biotechnology student with interests in agricultural science, scientific 
 <h3>🌾 Sustainable Agriculture</h3>
 
 <p>
-Developing innovative agricultural practices that improve productivity
-while preserving natural resources.
+
+Improving agricultural productivity through sustainable practices and
+modern farming technologies.
+
 </p>
 
 </div>
 
 <div class="card">
 
-<h3>🤖 Technology in Agriculture</h3>
+<h3>🤖 Technology & Agriculture</h3>
 
 <p>
-Applying programming and digital technologies to solve agricultural
-problems and improve farming efficiency.
+
+Applying programming, automation, and digital technologies to solve
+real-world agricultural challenges.
+
 </p>
 
 </div>
 
 <div class="card">
 
-<h3>📚 Education</h3>
+<h3>📚 Programming Education</h3>
 
 <p>
-Creating educational resources that make programming accessible to
-students and beginners.
+
+Creating educational resources that simplify computer science for
+students and self-learners.
+
 </p>
 
 </div>
@@ -430,23 +725,51 @@ students and beginners.
 
 <section>
 
-<h2 class="section-title">Highlights</h2>
+<h2 class="section-title">
+
+Highlights
+
+</h2>
 
 <div class="cards">
 
 <div class="card">
+
 <h3>📄 Research Papers</h3>
-<p>Prepared multiple academic reports and presentations in agriculture.</p>
+
+<p>
+
+Completed several academic reports and presentations related to cotton
+production and modern agriculture.
+
+</p>
+
 </div>
 
 <div class="card">
+
 <h3>📘 Author</h3>
-<p>Wrote "Booky", an educational JavaScript programming book.</p>
+
+<p>
+
+Published "Booky", an educational JavaScript programming book designed
+for beginners.
+
+</p>
+
 </div>
 
 <div class="card">
-<h3>🌍 Erasmus Applicant</h3>
-<p>Preparing an academic portfolio for international collaboration and graduate study.</p>
+
+<h3>🌍 International Vision</h3>
+
+<p>
+
+Preparing for international collaboration through the Erasmus
+Scholarship Programme.
+
+</p>
+
 </div>
 
 </div>
@@ -459,24 +782,45 @@ students and beginners.
 
 <section id="contact">
 
-<h2 class="section-title">Contact</h2>
+<h2 class="section-title">
+
+Contact
+
+</h2>
 
 <div class="about">
 
-<p><strong>Name:</strong> Esther Kamal</p>
+<p>
 
-<p><strong>Email:</strong> your-email@example.com</p>
+<strong>Name:</strong> Esther Kamal
 
-<p><strong>GitHub:</strong>
-<a href="https://github.com/YOUR_USERNAME" target="_blank">
-https://github.com/YOUR_USERNAME
-</a>
 </p>
 
 <p>
-Thank you for visiting my academic portfolio.
-I welcome opportunities for research collaboration,
-academic exchange, and international study.
+
+<strong>Email:</strong> your-email@example.com
+
+</p>
+
+<p>
+
+<strong>GitHub:</strong>
+
+<a href="https://github.com/YOUR_USERNAME" target="_blank">
+
+https://github.com/YOUR_USERNAME
+
+</a>
+
+</p>
+
+<p>
+
+Thank you for taking the time to visit my academic portfolio.
+
+I look forward to opportunities for research collaboration,
+international study, and academic exchange.
+
 </p>
 
 </div>
@@ -495,23 +839,21 @@ academic exchange, and international study.
 
 <script>
 
-document.querySelectorAll('nav a').forEach(anchor=>{
+document.querySelectorAll("nav a").forEach(anchor=>{
 
-anchor.addEventListener('click',function(e){
+anchor.addEventListener("click",function(e){
 
 e.preventDefault();
 
-document.querySelector(this.getAttribute('href')).scrollIntoView({
+document.querySelector(this.getAttribute("href")).scrollIntoView({
 
-behavior:'smooth'
-
-});
+behavior:"smooth"
 
 });
 
 });
 
-const cards=document.querySelectorAll('.card,.skill');
+});
 
 const observer=new IntersectionObserver(entries=>{
 
@@ -528,13 +870,13 @@ entry.target.style.transform="translateY(0)";
 
 });
 
-cards.forEach(card=>{
+document.querySelectorAll(".card,.skill").forEach(item=>{
 
-card.style.opacity="0";
-card.style.transform="translateY(40px)";
-card.style.transition="all .7s ease";
+item.style.opacity="0";
+item.style.transform="translateY(40px)";
+item.style.transition="all .8s ease";
 
-observer.observe(card);
+observer.observe(item);
 
 });
 
