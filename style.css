@@ -1,494 +1,233 @@
-/* ===========================================
-        ESTHER KAMAL PORTFOLIO
-=========================================== */
+// ==========================================
+// Esther Kamal Portfolio
+// ==========================================
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+// Smooth scrolling for navigation
 
-:root{
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
---primary:#2E8B57;
---secondary:#3B82F6;
+    anchor.addEventListener("click", function(e){
 
---accent:#F59E0B;
+        e.preventDefault();
 
---background:#F8FAFC;
+        document.querySelector(this.getAttribute("href"))
+        .scrollIntoView({
 
---surface:#FFFFFF;
+            behavior:"smooth"
 
---text:#1F2937;
+        });
 
---paragraph:#6B7280;
+    });
 
---border:#E5E7EB;
-
---shadow:0 15px 40px rgba(0,0,0,.08);
-
---radius:22px;
-
-}
-
-*{
-
-margin:0;
-
-padding:0;
-
-box-sizing:border-box;
-
-}
-
-html{
-
-scroll-behavior:smooth;
-
-}
-
-body{
-
-font-family:'Inter',sans-serif;
-
-background:var(--background);
-
-color:var(--text);
-
-line-height:1.8;
-
-overflow-x:hidden;
-
-}
-
-img{
-
-width:100%;
-
-display:block;
-
-}
-
-a{
-
-text-decoration:none;
-
-}
-
-.container{
-
-width:min(1200px,90%);
-
-margin:auto;
-
-}
+});
 
 
+// ==========================================
+// Sticky Navbar Shadow
+// ==========================================
 
-/* ================= NAVBAR ================= */
+const navbar = document.querySelector(".navbar");
 
-.navbar{
+window.addEventListener("scroll",()=>{
 
-position:fixed;
+    if(window.scrollY>40){
 
-top:25px;
+        navbar.classList.add("scrolled");
 
-left:50%;
+    }
 
-transform:translateX(-50%);
+    else{
 
-width:min(1200px,92%);
+        navbar.classList.remove("scrolled");
 
-padding:18px 35px;
+    }
 
-display:flex;
+});
 
-justify-content:space-between;
 
-align-items:center;
+// ==========================================
+// Fade In Animation
+// ==========================================
 
-background:rgba(255,255,255,.75);
+const observer = new IntersectionObserver(entries=>{
 
-backdrop-filter:blur(18px);
+    entries.forEach(entry=>{
 
-border:1px solid rgba(255,255,255,.6);
+        if(entry.isIntersecting){
 
-border-radius:20px;
+            entry.target.classList.add("show");
 
-box-shadow:var(--shadow);
+        }
 
-z-index:999;
+    });
+
+},{
+
+    threshold:.15
+
+});
+
+document.querySelectorAll("section,.highlight,.portfolio-card")
+.forEach(el=>{
+
+    el.classList.add("hidden");
+
+    observer.observe(el);
+
+});
+
+
+// ==========================================
+// Active Navigation
+// ==========================================
+
+const sections=document.querySelectorAll("section");
+
+const navLinks=document.querySelectorAll(".navbar ul li a");
+
+window.addEventListener("scroll",()=>{
+
+let current="";
+
+sections.forEach(section=>{
+
+const sectionTop=section.offsetTop-150;
+
+if(pageYOffset>=sectionTop){
+
+current=section.getAttribute("id");
 
 }
 
-.logo{
+});
 
-font-family:'Outfit';
+navLinks.forEach(link=>{
 
-font-size:30px;
+link.classList.remove("active");
 
-font-weight:700;
+if(link.getAttribute("href")==="#"+current){
 
-color:var(--text);
-
-}
-
-.logo span{
-
-color:var(--primary);
+link.classList.add("active");
 
 }
 
-.navbar ul{
+});
 
-display:flex;
+});
 
-gap:35px;
 
-list-style:none;
+// ==========================================
+// Back To Top Button
+// ==========================================
 
-}
+const topBtn=document.createElement("button");
 
-.navbar a{
+topBtn.innerHTML="↑";
 
-font-weight:500;
+topBtn.className="top-btn";
 
-color:var(--text);
+document.body.appendChild(topBtn);
 
-transition:.3s;
+window.addEventListener("scroll",()=>{
 
-}
+if(window.scrollY>500){
 
-.navbar a:hover{
-
-color:var(--primary);
-
-}
-
-.download-btn{
-
-padding:13px 25px;
-
-border-radius:50px;
-
-background:var(--primary);
-
-color:white !important;
-
-transition:.3s;
+topBtn.classList.add("visible");
 
 }
 
-.download-btn:hover{
+else{
 
-background:#256d46;
-
-}
-
-
-
-/* ================= HERO ================= */
-
-.hero{
-
-padding-top:180px;
-
-padding-bottom:100px;
-
-width:min(1200px,90%);
-
-margin:auto;
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-align-items:center;
-
-gap:80px;
+topBtn.classList.remove("visible");
 
 }
 
-.badge{
+});
 
-display:inline-block;
+topBtn.addEventListener("click",()=>{
 
-padding:12px 22px;
+window.scrollTo({
 
-border-radius:50px;
+top:0,
 
-background:#E7F8EF;
+behavior:"smooth"
 
-color:var(--primary);
+});
 
-font-weight:600;
+});
 
-margin-bottom:25px;
 
-}
+// ==========================================
+// Portfolio Card Hover
+// ==========================================
 
-.hero h1{
+document.querySelectorAll(".portfolio-card").forEach(card=>{
 
-font-family:'Outfit';
+card.addEventListener("mousemove",(e)=>{
 
-font-size:72px;
+const rect=card.getBoundingClientRect();
 
-line-height:1.1;
+const x=e.clientX-rect.left;
 
-margin-bottom:15px;
+const y=e.clientY-rect.top;
 
-}
+const rotateX=((y-rect.height/2)/25);
 
-.hero h1 span{
+const rotateY=((rect.width/2-x)/25);
 
-color:var(--primary);
+card.style.transform=
+`rotateX(${rotateX}deg)
+ rotateY(${rotateY}deg)
+ translateY(-8px)`;
 
-}
+});
 
-.hero h2{
+card.addEventListener("mouseleave",()=>{
 
-font-size:30px;
+card.style.transform="rotateX(0) rotateY(0)";
 
-font-weight:500;
+});
 
-margin-bottom:25px;
+});
 
-color:#475569;
 
-}
+// ==========================================
+// Hero Image Float
+// ==========================================
 
-.hero p{
+const heroImage=document.querySelector(".hero-right img");
 
-font-size:18px;
+if(heroImage){
 
-color:var(--paragraph);
+let direction=1;
 
-max-width:620px;
+let pos=0;
 
-margin-bottom:40px;
+setInterval(()=>{
 
-}
+pos+=0.3*direction;
 
-.hero-buttons{
+heroImage.style.transform=`translateY(${pos}px)`;
 
-display:flex;
+if(pos>10) direction=-1;
 
-gap:18px;
+if(pos<-10) direction=1;
 
-flex-wrap:wrap;
-
-}
-
-.primary{
-
-padding:18px 34px;
-
-border-radius:50px;
-
-background:var(--primary);
-
-color:white;
-
-font-weight:600;
-
-transition:.3s;
-
-}
-
-.primary:hover{
-
-transform:translateY(-4px);
-
-box-shadow:0 12px 30px rgba(46,139,87,.25);
-
-}
-
-.secondary{
-
-padding:18px 34px;
-
-border-radius:50px;
-
-border:2px solid var(--primary);
-
-color:var(--primary);
-
-font-weight:600;
-
-transition:.3s;
-
-}
-
-.secondary:hover{
-
-background:var(--primary);
-
-color:white;
-
-}
-
-.hero-right{
-
-display:flex;
-
-justify-content:center;
-
-}
-
-.hero-right img{
-
-width:430px;
-
-border-radius:30px;
-
-box-shadow:var(--shadow);
+},30);
 
 }
 
 
+// ==========================================
+// Footer Year
+// ==========================================
 
-/* ================= HIGHLIGHTS ================= */
+const year=document.getElementById("year");
 
-.highlights{
+if(year){
 
-width:min(1200px,90%);
-
-margin:80px auto;
-
-display:grid;
-
-grid-template-columns:repeat(4,1fr);
-
-gap:25px;
+year.textContent=new Date().getFullYear();
 
 }
 
-.highlight{
-
-background:white;
-
-padding:35px;
-
-border-radius:20px;
-
-box-shadow:var(--shadow);
-
-text-align:center;
-
-transition:.3s;
-
-}
-
-.highlight:hover{
-
-transform:translateY(-8px);
-
-}
-
-.highlight h3{
-
-font-family:'Outfit';
-
-font-size:28px;
-
-margin-bottom:10px;
-
-color:var(--primary);
-
-}
-
-.highlight p{
-
-color:var(--paragraph);
-
-}
-
-
-
-/* ================= TITLES ================= */
-
-.section-title{
-
-text-align:center;
-
-margin-bottom:70px;
-
-}
-
-.section-title h2{
-
-font-family:'Outfit';
-
-font-size:48px;
-
-margin-bottom:15px;
-
-}
-
-.section-title p{
-
-color:var(--paragraph);
-
-}
-
-
-
-/* ================= ABOUT ================= */
-
-.about-container{
-
-width:min(1200px,90%);
-
-margin:auto;
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:70px;
-
-align-items:center;
-
-padding:100px 0;
-
-}
-
-.about-image img{
-
-border-radius:25px;
-
-box-shadow:var(--shadow);
-
-}
-
-.about-text p{
-
-font-size:18px;
-
-color:var(--paragraph);
-
-margin-bottom:20px;
-
-}
-
-.interests{
-
-display:flex;
-
-flex-wrap:wrap;
-
-gap:15px;
-
-margin-top:30px;
-
-}
-
-.interests span{
-
-padding:12px 18px;
-
-background:white;
-
-border-radius:50px;
-
-box-shadow:var(--shadow);
-
-font-size:15px;
-
-}
+console.log("Portfolio Loaded Successfully");
