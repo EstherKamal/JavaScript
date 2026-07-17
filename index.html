@@ -1,886 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
+<header class="hero">
 
-<head>
+    <div class="hero-content">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <div class="hero-text">
 
-<title>Esther Kamal | Academic Portfolio</title>
+            <span class="tag">📘 Published Author</span>
 
-<meta name="description" content="Academic Portfolio for Erasmus Scholarship Application">
+            <h1>Booky</h1>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <h2>A Beginner-Friendly JavaScript Programming Book</h2>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+            <p>
+                I wrote <strong>Booky</strong> to make programming easier for
+                beginners through simple explanations, practical examples,
+                and hands-on exercises.
+                Writing this book reflects my passion for education,
+                technology, and sharing knowledge with others.
+            </p>
 
-<style>
+            <div class="buttons">
+                <a href="booky (2).pdf" class="btn-primary" target="_blank">
+                    Read Book
+                </a>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
+                <a href="#about" class="btn-secondary">
+                    About Me
+                </a>
+            </div>
 
-body{
+        </div>
 
-font-family:'Poppins',sans-serif;
+        <div class="hero-image">
 
-background:#f4f7fb;
+            <img src="book-cover.png" alt="Booky JavaScript Book">
 
-color:#333;
+        </div>
 
-line-height:1.7;
-
-}
-
-nav{
-
-position:fixed;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-display:flex;
-
-justify-content:center;
-
-gap:40px;
-
-padding:20px;
-
-background:rgba(255,255,255,.95);
-
-backdrop-filter:blur(10px);
-
-box-shadow:0 2px 15px rgba(0,0,0,.08);
-
-z-index:999;
-
-}
-
-nav a{
-
-text-decoration:none;
-
-color:#1976d2;
-
-font-weight:600;
-
-transition:.3s;
-
-}
-
-nav a:hover{
-
-color:#1b5e20;
-
-}
-
-header{
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-text-align:center;
-
-padding:0 10%;
-
-background:linear-gradient(135deg,#1b5e20,#1976d2);
-
-color:white;
-
-}
-
-.hero{
-
-max-width:900px;
-
-}
-
-.hero h1{
-
-font-size:64px;
-
-margin-bottom:20px;
-
-}
-
-.hero h2{
-
-font-weight:400;
-
-margin-bottom:25px;
-
-}
-
-.hero p{
-
-font-size:19px;
-
-margin-bottom:40px;
-
-}
-
-.button{
-
-display:inline-block;
-
-padding:16px 38px;
-
-background:white;
-
-color:#1976d2;
-
-text-decoration:none;
-
-font-weight:bold;
-
-border-radius:40px;
-
-transition:.3s;
-
-}
-
-.button:hover{
-
-transform:translateY(-3px);
-
-}
-
-section{
-
-padding:100px 10%;
-
-}
-
-.section-title{
-
-text-align:center;
-
-font-size:42px;
-
-margin-bottom:60px;
-
-color:#1976d2;
-
-}
-
-.about{
-
-max-width:900px;
-
-margin:auto;
-
-text-align:center;
-
-font-size:18px;
-
-}
-
-.cards{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-
-gap:30px;
-
-}
-
-.card{
-
-background:white;
-
-padding:30px;
-
-border-radius:16px;
-
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-
-transition:.35s;
-
-}
-
-.card:hover{
-
-transform:translateY(-10px);
-
-box-shadow:0 20px 40px rgba(0,0,0,.12);
-
-}
-
-.card h3{
-
-color:#1976d2;
-
-margin-bottom:15px;
-
-}
-
-.card p{
-
-margin-bottom:25px;
-
-}
-
-.card a{
-
-display:inline-block;
-
-padding:12px 24px;
-
-background:#1976d2;
-
-color:white;
-
-border-radius:30px;
-
-text-decoration:none;
-
-}
-
-.card a:hover{
-
-background:#1259a7;
-
-}
-
-.skills{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:25px;
-
-}
-
-.skill{
-
-background:white;
-
-padding:25px;
-
-border-radius:16px;
-
-box-shadow:0 8px 20px rgba(0,0,0,.08);
-
-}
-
-.skill h3{
-
-margin-bottom:15px;
-
-color:#1976d2;
-
-}
-
-.skill ul{
-
-padding-left:20px;
-
-}
-
-footer{
-
-background:#222;
-
-color:white;
-
-text-align:center;
-
-padding:35px;
-
-margin-top:80px;
-
-}
-
-@media(max-width:768px){
-
-.hero h1{
-
-font-size:42px;
-
-}
-
-.hero h2{
-
-font-size:22px;
-
-}
-
-nav{
-
-gap:15px;
-
-font-size:14px;
-
-}
-
-.section-title{
-
-font-size:32px;
-
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<nav>
-
-<a href="#about">About</a>
-
-<a href="#research">Research</a>
-
-<a href="#book">Book</a>
-
-<a href="#skills">Skills</a>
-
-<a href="#contact">Contact</a>
-
-</nav>
-
-<header>
-
-<div class="hero">
-
-<h1>Esther Kamal</h1>
-
-<h2>Biotechnology student</h2>
-
-<p>
-
-PassPassionate about scientific research, modern agriculture,software development, and bioinformatics. My goal is to combine engineering and
-biotechnology through scientific
-research and bioinformatics
-studies to support sustainable
-innovation.
-</p>
-
-<a href="#research" class="button">
-
-Explore My Work
-
-</a>
-
-</div>
+    </div>
 
 </header>
 
 <section id="about">
 
-<h2 class="section-title">
+    <h2>Hi, I'm Esther Kamal 👋</h2>
 
-About Me
+    <p>
+        I'm a Biotechnology student from Egypt with a passion for learning,
+        programming, science, and creating educational content.
+        I enjoy exploring new ideas, building useful projects,
+        and transforming complex concepts into simple learning resources.
+    </p>
 
-</h2>
-
-<div class="about">
-
-<p>
-
-I am a biotechnology student with interests in agricultural science,scientific writing, and software
-development. Driven by curiosity, I explore multiple topics, including cotton, plant heredity through genetics, and how biotechnology and engineering can help plants tolerate environmental stress. I
-believe interdisciplinary
-collaboration is essential for solving global challenges, andI hope to continue developing my academic journey through my
-college and other learning
-programs.
-
-</p>
-
-</div>
+    <p>
+        Beyond academics, I dream of traveling the world,
+        discovering different cultures,
+        collaborating with people from diverse backgrounds,
+        and contributing to projects that promote education,
+        innovation, and positive social impact.
+    </p>
 
 </section>
 
-  <!-- ========================= -->
-<!-- RESEARCH PORTFOLIO -->
-<!-- ========================= -->
+<section id="projects">
 
-<section id="research">
+    <h2>Featured Projects</h2>
 
-<h2 class="section-title">
+    <div class="card">
 
-Research Portfolio
+        <h3>📘 Booky</h3>
 
-</h2>
+        <p>
+            A JavaScript programming book written for beginners,
+            featuring practical examples and step-by-step explanations
+            to make web development accessible to everyone.
+        </p>
 
-<div class="cards">
+        <a href="booky (2).pdf" target="_blank">
+            Read Book
+        </a>
 
-<div class="card">
+    </div>
 
-<h3>🌿 Cotton Research Report</h3>
+    <div class="card">
 
-<p>
+        <h3>🌱 Scientific Research</h3>
 
-A comprehensive scientific report investigating cotton production,
-cultivation techniques, agricultural challenges, and sustainable
-improvements for future farming.
+        <p>
+            Academic work focused on biotechnology,
+            sustainable agriculture,
+            and modern agricultural technologies.
+        </p>
 
-</p>
+    </div>
 
-<a href="Cotton research report-17.pdf" target="_blank">
+    <div class="card">
 
-Open PDF
+        <h3>💻 Web Development</h3>
 
-</a>
+        <p>
+            Responsive websites and personal projects built with
+            HTML, CSS, and JavaScript.
+        </p>
 
-</div>
-
-<div class="card">
-
-<h3>📊 Cotton Research Presentation</h3>
-
-<p>
-
-A presentation summarizing the objectives, methodology,
-results, and conclusions of the cotton research project.
-
-</p>
-
-<a href="Cotton presentation.pdf" target="_blank">
-
-View Presentation
-
-</a>
-
-</div>
-
-<div class="card">
-
-<h3>🚜 Modern Agriculture</h3>
-
-<p>
-
-Research discussing precision agriculture, sustainable farming,
-modern technologies, and future agricultural innovation.
-
-</p>
-
-<a href="modern agriculture.pdf" target="_blank">
-
-Read Research
-
-</a>
-
-</div>
-
-<div class="card">
-
-<h3>📑 Additional Academic Research</h3>
-
-<p>
-
-Supporting academic documentation demonstrating my
-research experience and scientific writing abilities.
-
-</p>
-
-<a href="DOC-20260512-WA0041.pdf" target="_blank">
-
-Read PDF
-
-</a>
-
-</div>
-
-</div>
+    </div>
 
 </section>
-
-<!-- ========================= -->
-<!-- BOOK -->
-<!-- ========================= -->
-
-<section id="book">
-
-<h2 class="section-title">
-
-Publication
-
-</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>📘 Booky — JavaScript Programming Book</h3>
-
-<p>
-
-Booky is a beginner-friendly JavaScript programming book
-written to simplify web development concepts through
-clear explanations, practical examples, and coding exercises.
-
-The book reflects my enthusiasm for programming education
-and knowledge sharing.
-
-</p>
-
-<a href="booky (2)" target="_blank">
-
-Read Book
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ========================= -->
-<!-- ERASMUS -->
-<!-- ========================= -->
-
-<section id="erasmus">
-
-<h2 class="section-title">
-
-Why Erasmus?
-
-</h2>
-
-<div class="about">
-
-<p>
-
-The Erasmus Scholarship provides an exceptional opportunity
-to collaborate with researchers from different countries,
-exchange scientific knowledge, and strengthen interdisciplinary
-research skills.
-
-Through Erasmus, I hope to combine my interests in software
-development and agricultural science to contribute to
-innovative solutions that support sustainable development
-and food security.
-
-My long-term objective is to participate in international
-research projects and continue developing technologies
-that positively impact agriculture and education.
-
-</p>
-
-</div>
-
-</section>
-
-  <!-- ========================= -->
-<!-- SKILLS -->
-<!-- ========================= -->
-
-<section id="skills">
-
-<h2 class="section-title">
-
-Skills
-
-</h2>
-
-<div class="skills">
-
-<div class="skill">
-
-<h3>💻 Programming</h3>
-
-<ul>
-
-<li>JavaScript (ES6+)</li>
-
-<li>HTML5</li>
-
-<li>CSS3</li>
-
-<li>Responsive Web Design</li>
-
-<li>Git & GitHub</li>
-
-<li>Problem Solving</li>
-
-</ul>
-
-</div>
-
-<div class="skill">
-
-<h3>📖 Research</h3>
-
-<ul>
-
-<li>Scientific Writing</li>
-
-<li>Academic Research</li>
-
-<li>Literature Review</li>
-
-<li>Research Methodology</li>
-
-<li>Presentation Design</li>
-
-<li>Technical Documentation</li>
-
-</ul>
-
-</div>
-
-<div class="skill">
-
-<h3>🌱 Agriculture</h3>
-
-<ul>
-
-<li>Cotton Research</li>
-
-<li>Modern Agriculture</li>
-
-<li>Sustainable Farming</li>
-
-<li>Agricultural Innovation</li>
-
-<li>Food Security</li>
-
-</ul>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ========================= -->
-<!-- RESEARCH INTERESTS -->
-<!-- ========================= -->
-
-<section>
-
-<h2 class="section-title">
-
-Research Interests
-
-</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>🌾 Sustainable Agriculture</h3>
-
-<p>
-
-Improving agricultural productivity through sustainable practices and
-modern farming technologies.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>🤖 Technology & Agriculture</h3>
-
-<p>
-
-Applying programming, automation, and digital technologies to solve
-real-world agricultural challenges.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>📚 Programming Education</h3>
-
-<p>
-
-Creating educational resources that simplify computer science for
-students and self-learners.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ========================= -->
-<!-- ACHIEVEMENTS -->
-<!-- ========================= -->
-
-<section>
-
-<h2 class="section-title">
-
-Highlights
-
-</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>📄 Research Papers</h3>
-
-<p>
-
-Completed several academic reports and presentations related to cotton
-production and modern agriculture.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>📘 Author</h3>
-
-<p>
-
-Published "Booky", an educational JavaScript programming book designed
-for beginners.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>🌍 International Vision</h3>
-
-<p>
-
-Preparing for international collaboration through the Erasmus
-Scholarship Programme.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ========================= -->
-<!-- CONTACT -->
-<!-- ========================= -->
-
-<section id="contact">
-
-<h2 class="section-title">
-
-Contact
-
-</h2>
-
-<div class="about">
-
-<p>
-
-<strong>Name:</strong> Esther Kamal
-
-</p>
-
-<p>
-
-<strong>Email:</strong> egomanacnl@gmail.com
-
-</p>
-
-<p>
-
-<strong>GitHub:</strong>
-
-<a href="https://github.com/YOUR_USERNAME" target="_blank">  
-
-  https://github.com/EstherKamal
-</a>
-
-</p>
-
-<p>
-
-Thank you for taking the time to visit my academic portfolio.
-
-I look forward to opportunities for research collaboration,
-international study, and academic exchange.
-
-</p>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>
-
-© 2026 Esther Kamal • Academic Portfolio • Erasmus Scholarship Application
-
-</p>
-
-</footer>
-
-<script>
-
-document.querySelectorAll("nav a").forEach(anchor=>{
-
-anchor.addEventListener("click",function(e){
-
-e.preventDefault();
-
-document.querySelector(this.getAttribute("href")).scrollIntoView({
-
-behavior:"smooth"
-
-});
-
-});
-
-});
-
-const observer=new IntersectionObserver(entries=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.style.opacity="1";
-entry.target.style.transform="translateY(0)";
-
-}
-
-});
-
-});
-
-document.querySelectorAll(".card,.skill").forEach(item=>{
-
-item.style.opacity="0";
-item.style.transform="translateY(40px)";
-item.style.transition="all .8s ease";
-
-observer.observe(item);
-
-});
-
-</script>
-
-</body>
-
-</html>
