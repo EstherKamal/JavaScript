@@ -1,292 +1,129 @@
-/*==========================================
-        ESTHER KAMAL PORTFOLIO
-==========================================*/
+// ==========================================
+// Esther Kamal Portfolio Logic
+// ==========================================
 
-// Smooth Navbar Background
+// Smooth scrolling for navigation elements
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+        const targetElement = document.querySelector(this.getAttribute("href"));
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+    });
+});
 
-const nav = document.querySelector("nav");
+// Sticky Navbar Scroll Shadow Effect
+const navbar = document.querySelector(".navbar");
+if (navbar) {
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 40) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+    });
+}
+
+// Global Document Intersection Fade In Animation Engine
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, {
+    threshold: 0.10
+});
+
+document.querySelectorAll("section, .highlight, .portfolio-card").forEach(el => {
+    el.classList.add("hidden");
+    observer.observe(el);
+});
+
+// Dynamic Active Link Highlighting on Scroll
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".navbar ul li a");
+
+if (sections.length && navLinks.length) {
+    window.addEventListener("scroll", () => {
+        let current = "";
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 180;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === "#" + current) {
+                link.classList.add("active");
+            }
+        });
+    });
+}
+
+// Back To Top Action Interface Creation
+const topBtn = document.createElement("button");
+topBtn.innerHTML = "↑";
+topBtn.className = "top-btn";
+document.body.appendChild(topBtn);
 
 window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 50) {
-
-        nav.style.background = "rgba(5,8,22,.75)";
-        nav.style.backdropFilter = "blur(25px)";
-        nav.style.boxShadow = "0 15px 40px rgba(0,0,0,.4)";
-
+    if (window.scrollY > 500) {
+        topBtn.classList.add("visible");
     } else {
-
-        nav.style.background = "rgba(255,255,255,.08)";
-        nav.style.boxShadow = "none";
-
+        topBtn.classList.remove("visible");
     }
-
 });
 
+topBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
 
-// ========================================
-// Scroll Reveal
-// ========================================
+// Academic Portfolio Card Isometric Hover Transform Engine
+document.querySelectorAll(".portfolio-card").forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rotateX = ((y - rect.height / 2) / 25);
+        const rotateY = ((rect.width / 2 - x) / 25);
 
-const observer = new IntersectionObserver((entries)=>{
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
 
-entries.forEach(entry=>{
+    card.style.mouseleave = "none";
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "rotateX(0) rotateY(0)";
+    });
+});
 
-if(entry.isIntersecting){
+// Profile Photo Micro Floating Dynamics
+const heroImage = document.querySelector(".hero-right img");
+if (heroImage) {
+    let direction = 1;
+    let pos = 0;
+    setInterval(() => {
+        pos += 0.2 * direction;
+        heroImage.style.transform = `translateY(${pos}px)`;
 
-entry.target.classList.add("show");
-
+        if (pos > 8) direction = -1;
+        if (pos < -8) direction = 1;
+    }, 35);
 }
 
-});
-
-},{threshold:.2});
-
-document.querySelectorAll("section,.card,.project").forEach(el=>{
-
-el.classList.add("hidden");
-
-observer.observe(el);
-
-});
-
-
-// ========================================
-// Floating Mouse Glow
-// ========================================
-
-const glow = document.createElement("div");
-
-glow.className="cursor-glow";
-
-document.body.appendChild(glow);
-
-window.addEventListener("mousemove",(e)=>{
-
-glow.style.left=e.clientX+"px";
-glow.style.top=e.clientY+"px";
-
-});
-
-
-// ========================================
-// Book Tilt
-// ========================================
-
-const book=document.querySelector(".book");
-
-document.addEventListener("mousemove",(e)=>{
-
-const x=(window.innerWidth/2-e.clientX)/30;
-
-const y=(window.innerHeight/2-e.clientY)/30;
-
-book.style.transform=`
-rotateY(${-x}deg)
-rotateX(${y}deg)
-translateY(-10px)
-`;
-
-});
-
-document.addEventListener("mouseleave",()=>{
-
-book.style.transform="rotateY(0deg) rotateX(0deg)";
-
-});
-
-
-// ========================================
-// Typing Effect
-// ========================================
-
-const subtitle=document.querySelector(".hero h2");
-
-const text=subtitle.innerText;
-
-subtitle.innerText="";
-
-let i=0;
-
-function typing(){
-
-if(i<text.length){
-
-subtitle.innerHTML+=text.charAt(i);
-
-i++;
-
-setTimeout(typing,45);
-
+// Automatically Update Footer Copyright Year
+const year = document.getElementById("year");
+if (year) {
+    year.textContent = new Date().getFullYear();
 }
 
-}
-
-typing();
-
-
-// ========================================
-// Counter Animation
-// ========================================
-
-const numbers=document.querySelectorAll(".number");
-
-numbers.forEach(counter=>{
-
-const target=+counter.dataset.target;
-
-let current=0;
-
-const update=()=>{
-
-current+=target/100;
-
-if(current<target){
-
-counter.innerText=Math.floor(current);
-
-requestAnimationFrame(update);
-
-}else{
-
-counter.innerText=target;
-
-}
-
-}
-
-update();
-
-});
-
-
-// ========================================
-// Progress Bar
-// ========================================
-
-const progress=document.createElement("div");
-
-progress.className="progress-bar";
-
-document.body.appendChild(progress);
-
-window.addEventListener("scroll",()=>{
-
-const total=document.documentElement.scrollHeight-window.innerHeight;
-
-const percent=(window.scrollY/total)*100;
-
-progress.style.width=percent+"%";
-
-});
-
-
-// ========================================
-// Card Tilt
-// ========================================
-
-document.querySelectorAll(".card,.project").forEach(card=>{
-
-card.addEventListener("mousemove",(e)=>{
-
-const rect=card.getBoundingClientRect();
-
-const x=e.clientX-rect.left;
-
-const y=e.clientY-rect.top;
-
-const rotateX=((y-rect.height/2)/12);
-
-const rotateY=((rect.width/2-x)/12);
-
-card.style.transform=`
-rotateX(${rotateX}deg)
-rotateY(${rotateY}deg)
-translateY(-12px)
-`;
-
-});
-
-card.addEventListener("mouseleave",()=>{
-
-card.style.transform="rotateX(0) rotateY(0)";
-
-});
-
-});
-
-
-// ========================================
-// Floating Particles
-// ========================================
-
-for(let i=0;i<40;i++){
-
-const particle=document.createElement("span");
-
-particle.className="particle";
-
-particle.style.left=Math.random()*100+"vw";
-
-particle.style.animationDuration=(5+Math.random()*10)+"s";
-
-particle.style.animationDelay=Math.random()*5+"s";
-
-particle.style.width=particle.style.height=(2+Math.random()*6)+"px";
-
-document.body.appendChild(particle);
-
-}
-
-
-// ========================================
-// Button Ripple
-// ========================================
-
-document.querySelectorAll("a").forEach(btn=>{
-
-btn.addEventListener("click",function(e){
-
-const ripple=document.createElement("span");
-
-const rect=this.getBoundingClientRect();
-
-ripple.style.left=(e.clientX-rect.left)+"px";
-
-ripple.style.top=(e.clientY-rect.top)+"px";
-
-ripple.className="ripple";
-
-this.appendChild(ripple);
-
-setTimeout(()=>{
-
-ripple.remove();
-
-},600);
-
-});
-
-});
-
-
-// ========================================
-// Parallax Hero
-// ========================================
-
-window.addEventListener("scroll",()=>{
-
-const hero=document.querySelector(".hero");
-
-hero.style.backgroundPositionY=window.scrollY*.4+"px";
-
-});
-
-
-// ========================================
-// Console Easter Egg
-// ========================================
-
-console.log("%c👋 Welcome!","font-size:35px;color:#4F8CFF;font-weight:bold;");
-
-console.log("%cDesigned by Esther Kamal","font-size:18px;color:#8B5CF6;");
+console.log("Scholarship Profile System Validated Successfully.");
