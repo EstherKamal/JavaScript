@@ -59,7 +59,6 @@ if (sections.length && navLinks.length) {
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 150;
-            // Fixed: changed deprecated pageYOffset to window.scrollY
             if (window.scrollY >= sectionTop) {
                 current = section.getAttribute("id");
             }
@@ -140,4 +139,21 @@ if (year) {
     year.textContent = new Date().getFullYear();
 }
 
-console.log("Portfolio Loaded Successfully");
+// ==========================================
+// FIXED: Missing Animation Styles Injected 
+// ==========================================
+const style = document.createElement("style");
+style.innerHTML = `
+    .hidden {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .show {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+`;
+document.head.appendChild(style);
+
+console.log("Portfolio Loaded and Animation Missing Parts Patched Successfully");
