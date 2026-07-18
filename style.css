@@ -1,159 +1,410 @@
-// ==========================================
-// Esther Kamal Portfolio
-// ==========================================
-
-// Smooth scrolling for navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function(e) {
-        e.preventDefault();
-        const targetElement = document.querySelector(this.getAttribute("href"));
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: "smooth"
-            });
-        }
-    });
-});
-
-// ==========================================
-// Sticky Navbar Shadow
-// ==========================================
-const navbar = document.querySelector(".navbar");
-if (navbar) {
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 40) {
-            navbar.classList.add("scrolled");
-        } else {
-            navbar.classList.remove("scrolled");
-        }
-    });
+/* ==========================================
+   Global Reset & Professional Typography
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
-// ==========================================
-// Fade In Animation
-// ==========================================
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        }
-    });
-}, {
-    threshold: 0.15
-});
-
-document.querySelectorAll("section, .highlight, .portfolio-card").forEach(el => {
-    el.classList.add("hidden");
-    observer.observe(el);
-});
-
-// ==========================================
-// Active Navigation
-// ==========================================
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".navbar ul li a");
-
-if (sections.length && navLinks.length) {
-    window.addEventListener("scroll", () => {
-        let current = "";
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 150;
-            if (window.scrollY >= sectionTop) {
-                current = section.getAttribute("id");
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === "#" + current) {
-                link.classList.add("active");
-            }
-        });
-    });
+body {
+    background-color: #fafbfc;
+    color: #2d3748;
+    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-// ==========================================
-// Back To Top Button
-// ==========================================
-const topBtn = document.createElement("button");
-topBtn.innerHTML = "↑";
-topBtn.className = "top-btn";
-document.body.appendChild(topBtn);
+h1, h2, h3, .logo {
+    font-family: 'Outfit', sans-serif;
+}
 
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 500) {
-        topBtn.classList.add("visible");
-    } else {
-        topBtn.classList.remove("visible");
+/* ==========================================
+   Navigation Bar Styles
+   ========================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 8%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 15px 8%;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a202c;
+}
+
+.logo span {
+    color: #3182ce;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover, .navbar ul li a.active {
+    color: #3182ce;
+}
+
+.download-btn {
+    padding: 10px 20px;
+    border: 2px solid #3182ce;
+    color: #3182ce;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    background: #3182ce;
+    color: white;
+}
+
+/* ==========================================
+   Hero Section Layout (Picture on Right)
+   ========================================== */
+.hero {
+    min-height: 100vh;
+    padding: 120px 8% 60px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.hero-left {
+    flex: 1;
+    max-width: 600px;
+}
+
+.badge {
+    background: #ebf8ff;
+    color: #2b6cb0;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.hero-left h1 {
+    font-size: 52px;
+    color: #1a202c;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+.hero-left h1 span {
+    color: #3182ce;
+}
+
+.hero-left h2 {
+    font-size: 22px;
+    color: #718096;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.hero-left p {
+    color: #4a5568;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.hero-buttons a {
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.hero-buttons a.primary {
+    background: #3182ce;
+    color: white;
+    box-shadow: 0 4px 14px rgba(49, 130, 206, 0.3);
+}
+
+.hero-buttons a.primary:hover {
+    background: #2b6cb0;
+    transform: translateY(-2px);
+}
+
+.hero-buttons a.secondary {
+    background: #edf2f7;
+    color: #4a5568;
+}
+
+.hero-buttons a.secondary:hover {
+    background: #e2e8f0;
+    transform: translateY(-2px);
+}
+
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-right img {
+    width: 360px;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border: 8px solid white;
+}
+
+/* ==========================================
+   Metrics Section
+   ========================================== */
+.highlights {
+    padding: 40px 8%;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #edf2f7;
+    border-bottom: 1px solid #edf2f7;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.highlight {
+    text-align: center;
+}
+
+.highlight h3 {
+    font-size: 32px;
+    color: #3182ce;
+    margin-bottom: 5px;
+}
+
+.highlight p {
+    color: #718096;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ==========================================
+   Common Section Headers
+   ========================================== */
+section {
+    padding: 100px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    color: #1a202c;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #718096;
+    font-size: 16px;
+}
+
+/* ==========================================
+   About Section Layout
+   ========================================== */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+}
+
+.about-text {
+    flex: 1.5;
+}
+
+.about-text p {
+    font-size: 17px;
+    color: #4a5568;
+    margin-bottom: 20px;
+}
+
+.interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.interests span {
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+/* ==========================================
+   Portfolio Matrix Grid (Scholarship Ready)
+   ========================================== */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-card {
+    background: white;
+    border: 1px solid #edf2f7;
+    padding: 35px;
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-icon {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.portfolio-card h3 {
+    font-size: 20px;
+    color: #1a202c;
+    margin-bottom: 12px;
+}
+
+.portfolio-card p {
+    color: #636e72;
+    font-size: 15px;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.portfolio-card a {
+    color: #3182ce;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.portfolio-card a:hover {
+    transform: translateX(5px);
+}
+
+/* ==========================================
+   Back To Top Button Layout
+   ========================================== */
+.top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: -60px;
+    width: 45px;
+    height: 45px;
+    background: #3182ce;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
+    transition: all 0.4s ease;
+    z-index: 999;
+}
+
+.top-btn.visible {
+    right: 30px;
+}
+
+/* ==========================================
+   Footer
+   ========================================== */
+footer {
+    padding: 40px 8%;
+    background: #1a202c;
+    color: #a0aec0;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* ==========================================
+   JavaScript Animation Hooks
+   ========================================== */
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.show {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* ==========================================
+   Responsive Adaptations
+   ========================================== */
+@media (max-width: 968px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 140px;
     }
-});
-
-topBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-});
-
-// ==========================================
-// Portfolio Card Hover
-// ==========================================
-document.querySelectorAll(".portfolio-card").forEach(card => {
-    card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const rotateX = ((y - rect.height / 2) / 25);
-        const rotateY = ((rect.width / 2 - x) / 25);
-
-        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-    });
-
-    card.addEventListener("mouseleave", () => {
-        card.style.transform = "rotateX(0) rotateY(0)";
-    });
-});
-
-// ==========================================
-// Hero Image Float
-// ==========================================
-const heroImage = document.querySelector(".hero-right img");
-if (heroImage) {
-    let direction = 1;
-    let pos = 0;
-    setInterval(() => {
-        pos += 0.3 * direction;
-        heroImage.style.transform = `translateY(${pos}px)`;
-
-        if (pos > 10) direction = -1;
-        if (pos < -10) direction = 1;
-    }, 30);
-}
-
-// ==========================================
-// Footer Year
-// ==========================================
-const year = document.getElementById("year");
-if (year) {
-    year.textContent = new Date().getFullYear();
-}
-
-// ==========================================
-// FIXED: Missing Animation Styles Injected 
-// ==========================================
-const style = document.createElement("style");
-style.innerHTML = `
-    .hidden {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    .hero-right img {
+        width: 280px;
+        height: 280px;
     }
-    .show {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
+    .hero-buttons {
+        justify-content: center;
     }
-`;
-document.head.appendChild(style);
-
-console.log("Portfolio Loaded and Animation Missing Parts Patched Successfully");
+    .about-container {
+        flex-direction: column;
+    }
+    .navbar ul {
+        display: none; /* Simplification for desktop clean layouts */
+    }
+}
